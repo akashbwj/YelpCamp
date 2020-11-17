@@ -7,24 +7,28 @@
 		<link rel="stylesheet" href="/stylesheets/main.css">
 	</head>
 	<body>
-	<nav class="navbar navbar-default">
+
+	<nav class="navbar navbar-default" style="background-color: #f55e56;">
 		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/">YelpCamp</a>
-			</div>			
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="/campgrounds">Home</a></li>
-				  </ul>
-				<ul class="nav navbar-nav navbar-right">
-					<% if(!currentUser){ %>
-						<li><a href="/login">Login</a></li>
-						<li><a href="/register">Sign Up</a></li>
-					<% } else { %>
-						<li><a href="#">Signed in as <%= currentUser.username %></a></li>
-						<li><a href="/logout">Logout</a></li>
-					<% } %>
-				</ul>
+			<div class="container">
+
+				<div class="navbar-header">
+					<a class="navbar-brand" style="color:#f7eceb; font-size: 21px; font-weight: 600;" href="/">YelpCamp</a>
+				</div>			
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="/campgrounds" style="color:#f7eceb;">Home</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<% if(!currentUser){ %>
+							<li><a href="/login" style="color:#f7eceb;">Login</a></li>
+							<li><a href="/register" style="color:#f7eceb;">Sign Up</a></li>
+						<% } else { %>
+							<li><a href="#" style="color:#f7eceb;">Signed in as <%= currentUser.username %></a></li>
+							<li><a href="/logout" style="color:#f7eceb;" >Logout</a></li>
+						<% } %>
+					</ul>
+				</div>
 			</div>
 		</div>	
 	</nav> 
@@ -40,4 +44,5 @@
 			</div>	
 		<% } %> 
 	</div>
+
 
