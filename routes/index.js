@@ -24,8 +24,12 @@ router.post("/register",function(req,res){
         firstName:req.body.firstName,
         lastName:req.body.lastName,
         email:req.body.email,
-        avatar:req.body.avatar
     });
+    if(req.body.avatar==''){
+      req.body.avatar=undefined;
+    }
+    newUser.avatar=req.body.avatar;
+
     if(req.body.adminCode=='secretcode123'){
         newUser.isAdmin=true;
     }
