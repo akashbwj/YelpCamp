@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express=require("express"),
     app=express(),
 	bodyParser=require("body-parser"),
@@ -10,9 +11,10 @@ var express=require("express"),
 	Campground=require("./models/campground"),
 	Comment=require("./models/comment"),
 	User=require('./models/user'),
-	seedDB=require("./seeds");
+	seedDB=require("./seeds"),
+	dbUrl=process.env.DB_URL||"mongodb://localhost:27017/yelp_camp";
 
-	require('dotenv').config()
+	
 //requiring routes
 var commentRoutes = require("./routes/comments"),
 	reviewRoutes     = require("./routes/reviews"),
@@ -21,11 +23,12 @@ var commentRoutes = require("./routes/comments"),
 
 //seedDB(); //seed the database
 
-
-mongoose.connect("mongodb://localhost:27017/yelp_camp",{
+//"mongodb://localhost:27017/yelp_camp"
+mongoose.connect(dbUrl,{
     useNewUrlParser:true,
 	useUnifiedTopology:true,
-	useFindAndModify:false
+	useFindAndModify:false,
+	useCreateIndex:true
 })
 .then(()=>console.log("connected to DB!"))
 .catch(error=>console.log(error.message));
@@ -39,10 +42,10 @@ app.use(methodOverride("_method"));
 app.use(flash());
 app.locals.moment = require('moment');
 
-
+const secret=process.env.SECRET||"Once again Rusty wins cutest dog!";
 //PASSPORT CONFIGURATION
 app.use(require("express-session")({
-    secret: "Once again Rusty wins cutest dog!",
+    secret:secret,
     resave: false,
     saveUninitialized: false
 }));
