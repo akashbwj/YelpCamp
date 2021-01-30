@@ -22,10 +22,10 @@ Run : npm install
 
 Create a .env file (or just export manually in the terminal) in the root of the project and add the following:
 
-GMAILPW=<your gmail password>
-CLOUDINARY_API_KEY=<key>
-CLOUDINARY_API_SECRET=<secret>
-CLOUDINARY_URL=<url>
+<li>GMAILPW=your gmail password</li>
+<li>CLOUDINARY_API_KEY=your key</li>
+<li>CLOUDINARY_API_SECRET=your secret code</li>
+<li>CLOUDINARY_URL=your url</li>
 
 Run mongod in another terminal and node app.js in the terminal with the project.
 
